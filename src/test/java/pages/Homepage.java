@@ -79,6 +79,9 @@ public class Homepage {
     @FindBy (xpath = "//select[@id='select-undefined']")
     public WebElement selectBox;
 
+    @FindBy (xpath = "//div[@class='hb-toast-close-icon-holder']")
+    public WebElement cardIsEmptyInfo;
+
     public void login(){
 
         Driver.getDriver().get(ConfigReader.getProperty("hepsiburadaUrl"));
@@ -86,6 +89,8 @@ public class Homepage {
         ReusableMethods.hover(homepageSignInButton);
 
         signInButton.click();
+
+        ReusableMethods.waitForVisibility(cookiePass,15);
 
         cookiePass.click();
 

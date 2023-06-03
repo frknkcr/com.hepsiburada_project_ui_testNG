@@ -10,12 +10,19 @@ public class ChangeAddress extends TestBaseRapor {
     @Test
     public void test01(){
 
+        extentTest = extentReports.createTest("user should be able to search by address on the home page");
+
         Homepage homepage = new Homepage();
 
+        extentTest.info("user logs in with valid account information");
         homepage.login();
+        extentTest.pass("logged in with valid information");
 
+        extentTest.info("User should be able to choose the address information they want");
         homepage.homepageSelectLocation("antalya","kepez","emek");
+        extentTest.pass("address information selected");
 
+        extentTest.info("user logs out");
         homepage.homepageLogout();
 
         /*
