@@ -82,6 +82,36 @@ public class Homepage {
     @FindBy (xpath = "//div[@class='hb-toast-close-icon-holder']")
     public WebElement cardIsEmptyInfo;
 
+    @FindBy (xpath = "(//a[@title='Kullanıcı Bilgilerim'])[1]")
+    public WebElement myUserInformation;
+
+    @FindBy (xpath = "//input[@id='txtName']")
+    public WebElement myUserInformationNameTextBox;
+
+    @FindBy (xpath = "//input[@id='genderMale']")
+    public WebElement maleDropbox;
+
+    @FindBy (xpath = "//input[@id='genderFemale']")
+    public WebElement famaleDropbox;
+
+    @FindBy (xpath = "(//button[text()='Güncelle'])[1]")
+    public WebElement saveButton;
+
+    @FindBy (xpath = "//div[@class='hb-toast-text']")
+    public WebElement transactionNotification;
+
+    @FindBy (xpath = "//a[text()='Şifre değişikliği']")
+    public WebElement changePassword;
+
+    @FindBy (xpath = "//input[@id='txtOldPassword']")
+    public WebElement oldPassword;
+
+    @FindBy (xpath = "//input[@id='txtNewPassword']")
+    public WebElement newPassword;
+
+    @FindBy (xpath = "//*[@id='root']/div/div/div[2]/div[2]/div/div[2]/div[2]/div/div/div[3]/div/div[2]/div/div[2]")
+    public WebElement passwordChangePassText;
+
     public void login(){
 
         Driver.getDriver().get(ConfigReader.getProperty("hepsiburadaUrl"));

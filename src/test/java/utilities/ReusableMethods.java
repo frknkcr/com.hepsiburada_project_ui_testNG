@@ -1,5 +1,6 @@
 package utilities;
 
+import com.github.javafaker.Faker;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.*;
@@ -410,6 +411,41 @@ public class ReusableMethods {
 
     public static void waitAndClickLocationText(WebElement element, String value) {
         Driver.getDriver().findElement(By.xpath("//*[text()='" + value + "']")).click();
+    }
+
+    public static String hepsiburadaGeneratePassword() {
+        Faker faker = new Faker();
+        String password;
+
+        do {
+            password = faker.internet().password();
+        } while (!isPasswordValid(password));
+
+        return password+"A";
+    }
+
+    public static boolean isPasswordValid(String password) {
+        // Şifre en az 8 karakter uzunluğunda olmalı
+        if (password.length() < 8) {
+            return false;
+        }
+
+        // Şifre en az bir harf, rakam veya özel karakter içermeli
+        boolean hasLetter = false;
+        boolean hasDigit = false;
+        boolean hasSpecialChar = false;
+
+        for (char ch : password.toCharArray()) {
+            if (Character.isLetter(ch)) {
+                hasLetter = true;
+            } else if (Character.isDigit(ch)) {
+                hasDigit = true;
+            } else if (!Character.isLetterOrDigit(ch)) {
+                hasSpecialChar = true;
+            }
+        }
+
+        return hasLetter && (hasDigit || hasSpecialChar);
     }
 
 }

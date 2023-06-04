@@ -23,7 +23,7 @@ public class ChangeAddress extends TestBaseRapor {
         extentTest.pass("address information selected");
 
         extentTest.info("user logs out");
-        homepage.homepageLogout();
+        //homepage.homepageLogout();
 
         /*
 
