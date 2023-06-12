@@ -10,6 +10,11 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 public class ChangeUserInfo {
 
     Actions actions = new Actions(Driver.getDriver());
@@ -43,7 +48,7 @@ public class ChangeUserInfo {
         actions.sendKeys(Keys.TAB).sendKeys().keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL)
                 .sendKeys(faker.name().lastName()).perform();
 
-        actions.sendKeys(Keys.TAB).sendKeys("12.01.1998").perform();
+        actions.sendKeys(Keys.TAB).sendKeys(ReusableMethods.createRandomDateString()).perform();
 
         if (!homepage.maleDropbox.isSelected()){
             homepage.maleDropbox.click();

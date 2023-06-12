@@ -11,6 +11,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.function.Function;
 
@@ -446,6 +449,20 @@ public class ReusableMethods {
         }
 
         return hasLetter && (hasDigit || hasSpecialChar);
+    }
+
+    public static String createRandomDateString() {
+
+        Faker faker = new Faker();
+        java.util.Date randomDate = faker.date().birthday();
+
+        // Doğum tarihini LocalDate nesnesine dönüştür
+        LocalDate localDate = randomDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        // Tarihi belirli bir formata dönüştür
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+
+        return localDate.format(formatter);
     }
 
 }
